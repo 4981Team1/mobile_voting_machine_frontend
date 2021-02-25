@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_blue/flutter_blue.dart';
+import '../ConnectionManager.dart';
 
 ListView deviceList(List<BluetoothDevice> devices, Function connect) {
   return ListView.builder(
@@ -33,7 +34,17 @@ ListView deviceList(List<BluetoothDevice> devices, Function connect) {
       });
 }
 
-ListView serviceList(List<BluetoothService> services, Function connect) {
+class ServiceList extends StatelessWidget{
+  ConnectionManager connectionManager = ConnectionManager.getInstance();
+  List<BluetoothService> services;
+
+  @override
+  Widget build(BuildContext context) {
+  connectionManager.getDevice().services.forEach((List<BluetoothService> services) {
+     for (BluetoothService result in services) {
+       services.add(result);
+     }
+   });
   return ListView.builder(
       itemCount: services.length,
       itemBuilder: (context, index) {
@@ -64,6 +75,7 @@ ListView serviceList(List<BluetoothService> services, Function connect) {
               ),
         ]
         ),);});
+  }
 }
 
 ListView characteristicList(List<BluetoothCharacteristic> characteristics) {

@@ -1,4 +1,4 @@
-name: toons_lab
+name: Voting_Machine
 description: A new Flutter application.
 
 # The following line prevents the package from being accidentally published to
@@ -24,6 +24,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_blue: ^0.7.3
+  provider: ^4.0.0
 
 
 
