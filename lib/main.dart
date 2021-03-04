@@ -12,6 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         title: 'Voting Machine',
+
         home: MyHomePage(title: "Voting Machine"));
   }
 }
@@ -37,8 +38,11 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) => Scaffold(
     appBar: AppBar(
       title: Text(widget.title),
+      backgroundColor: Colors.grey[850],
     ),
     body: _buildDeviceListView(),
+    backgroundColor: Colors.grey[50],
+
   );
 
   @override
