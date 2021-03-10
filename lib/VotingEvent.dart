@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:Voting_Machine/AvailablePolls.dart';
 import 'package:flutter/material.dart';
 import 'ConnectionManager.dart';
+import './models/choices.dart';
 import 'EnterPin.dart';
 import 'main.dart';
 import 'Confirmation.dart';
@@ -12,7 +13,8 @@ final connectionManager = ConnectionManager.getInstance();
 /// This Widget is the main application widget.
 class VotingEvent extends StatelessWidget {
   static const String _title = 'Example';
-
+  String jsonStr;
+  VotingEvent({Key key, this.jsonStr}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -22,10 +24,10 @@ class VotingEvent extends StatelessWidget {
             centerTitle: true,
             backgroundColor: Colors.grey[850],
             title: Text("Welcome!")),
-        backgroundColor: Colors.grey[50],
+        backgroundColor: Colors.black,
         // appBar: AppBar(title: const Text(_title)),
         body: Center(
-          child: MyStatefulWidget(),
+          child: MyStatefulWidget(jsonStr: jsonStr),
         ),
       ),
     );
@@ -35,11 +37,11 @@ class VotingEvent extends StatelessWidget {
 enum BestTutorSite { javatpoint, w3schools, tutorialandexample }
 
 class MyStatefulWidget extends StatefulWidget {
-  MyStatefulWidget({Key key}) : super(key: key);
+  String jsonStr;
+  MyStatefulWidget({Key key, this.jsonStr}) : super(key: key);
 
   @override
-  // _MyStatefulWidgetState createState() => _MyStatefulWidgetState();
-  _GenerateVoteList createState() => _GenerateVoteList();
+  _GenerateVoteList createState() => _GenerateVoteList(json: jsonStr);
 }
 
 BestTutorSite _site = BestTutorSite.javatpoint;
@@ -132,13 +134,18 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
 
 class _GenerateVoteList extends State<MyStatefulWidget> {
   // BestTutorSite _site = BestTutorSite.javatpoint;
-  String json = '{"choices":{"a":1,"b":1,"c":2,"d":3,"e":3}}';
+  String json;
+  _GenerateVoteList({this.json});
   int _site1 = 0;
 
   Widget build(BuildContext context) {
+    print("jsonstring in generatevotelist: " + json);
+    Map<String, dynamic> jsonMap = jsonDecode(json);
+    var choices = Choices.fromJson(jsonMap);
+    json = jsonEncode(choices);
     List<Widget> ltList = generateList(json);
 
-    Widget backBtn = RaisedButton(
+    Widget sendBtn = RaisedButton(
       onPressed: () {
         Navigator.push(
           context,
@@ -149,11 +156,10 @@ class _GenerateVoteList extends State<MyStatefulWidget> {
       child: const Text('Submit', style: TextStyle(fontSize: 20)),
     );
 
-    Widget sendBtn = RaisedButton(
+    Widget backBtn = RaisedButton(
       onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => AvailablePolls()),
+        Navigator.pop(
+          context
         );
       },
       color: Colors.white,
