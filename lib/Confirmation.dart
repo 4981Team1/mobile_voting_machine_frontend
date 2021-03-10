@@ -1,5 +1,8 @@
 import 'package:Voting_Machine/AvailablePolls.dart';
+import 'package:flutter_blue/flutter_blue.dart';
 import 'package:flutter/material.dart';
+import './models/ballot.dart';
+import 'dart:convert';
 import 'ConnectionManager.dart';
 import 'EnterPin.dart';
 import 'VotingEvent.dart';
@@ -7,6 +10,9 @@ import 'VotingEvent.dart';
 final connectionManager = ConnectionManager.getInstance();
 
 class Confirmation extends StatelessWidget {
+  String selected;
+  String electionId;
+  Confirmation({Key key, this.selected, this.electionId}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,12 +29,22 @@ class Confirmation extends StatelessWidget {
                   height: 200,
                 ),
                 Text(
-                  'You have selected Candidate #2 and please confirm this.', style: TextStyle(
+                  'You have selected' + selected + 'and please confirm this.', style: TextStyle(
                   color: Colors.white,
                 ),
                 ),
                 RaisedButton(
                   onPressed: () {
+                    Map<String, dynamic> json;
+                    json['_id'] = electionId;
+                    json['selected'] = selected;
+                    var ballotObj = Ballot.fromJson(json);
+                    String jsonStr = jsonEncode(ballotObj);
+                    for(BluetoothCharacteristic characteristic in connectionManager.getService().characteristics) {
+                      if(characteristic.uuid == new Guid('01010101-0101-0101-0101-010101524745')) {
+                        characteristic.write(utf8.encode(jsonStr));
+                      }
+                    }
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => VotingEvent()),

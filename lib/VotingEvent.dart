@@ -4,17 +4,24 @@ import 'package:Voting_Machine/AvailablePolls.dart';
 import 'package:flutter/material.dart';
 import 'ConnectionManager.dart';
 import './models/choices.dart';
+import 'dart:convert';
 import 'EnterPin.dart';
 import 'main.dart';
 import 'Confirmation.dart';
 
 final connectionManager = ConnectionManager.getInstance();
+List<String> keyList = [];
+int _site1 = 0;
+String electionId;
 
 /// This Widget is the main application widget.
 class VotingEvent extends StatelessWidget {
   static const String _title = 'Example';
   String jsonStr;
-  VotingEvent({Key key, this.jsonStr}) : super(key: key);
+  VotingEvent({Key key, this.jsonStr}) : super(key: key) {
+    Map<String, dynamic> jsonObj = jsonDecode(jsonStr);
+    electionId = jsonObj['_id'];
+  }
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -136,7 +143,6 @@ class _GenerateVoteList extends State<MyStatefulWidget> {
   // BestTutorSite _site = BestTutorSite.javatpoint;
   String json;
   _GenerateVoteList({this.json});
-  int _site1 = 0;
 
   Widget build(BuildContext context) {
     print("jsonstring in generatevotelist: " + json);
@@ -149,7 +155,7 @@ class _GenerateVoteList extends State<MyStatefulWidget> {
       onPressed: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => Confirmation()),
+          MaterialPageRoute(builder: (context) => Confirmation(selected: keyList[_site1], electionId: electionId)),
         );
       },
       color: Colors.white,
@@ -188,6 +194,7 @@ class _GenerateVoteList extends State<MyStatefulWidget> {
     List<Widget> list = [];
     int i = 0;
     data['choices'].forEach((key, value) {
+      keyList.add(key);
       ListTile lt = ListTile(
         title: Text(
           '$key',
