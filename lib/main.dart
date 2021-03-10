@@ -95,20 +95,23 @@ class _MyHomePageState extends State<MyHomePage> {
     } catch (e) {
       if (e.code != 'already_connected') throw e;
     } finally {
+      await connectionManager.getDevice().discoverServices();
+//      print(connectionManager.getDevice().services);
+      connectionManager.getDevice().services.forEach((List<BluetoothService> services) {
+          for(BluetoothService service in services) {
+            print("Service information: " + service.toString());
+            print("assigned service");
+            if(service.uuid == new Guid("00000000-0000-1000-8000-00805f9b34fb")){
+              connectionManager.setService(service);
+            }
+          }
+      });
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => EnterPin()),
       );
-/*
-        await connectedDevice.discoverServices();
-        setState(() {
-          connectedDevice.services.forEach((List<BluetoothService> services) {
-            for (BluetoothService result in services) {
-              _addServiceToList(result);
-            }
-          });
-        });
-        */
+
+      }
     }
-  }
 }
+

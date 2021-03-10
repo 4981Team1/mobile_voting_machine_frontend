@@ -15,7 +15,7 @@ class Confirmation extends StatelessWidget {
           backgroundColor: Colors.grey[850],
           title: Text("Welcome!")
       ),
-      backgroundColor: Colors.grey[50],
+      backgroundColor: Colors.black,
       body: Center(
           child: Column(
               children: <Widget>[

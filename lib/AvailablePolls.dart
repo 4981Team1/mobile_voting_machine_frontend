@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './models/poll.dart';
 import 'ConnectionManager.dart';
 import 'EnterPin.dart';
 import 'VotingEvent.dart';
@@ -12,11 +13,7 @@ final connectionManager = ConnectionManager.getInstance();
 /**
  * Converting json string to Poll object
  */
-Future<List<Poll>> fetchPoll() async {
-
-  String jsonString = '[{"_id":"1111","details":"Burnabyy Campus Election"},'
-      '{"_id":"2222","details":"Downtown Campus Election"},'
-      '{"_id":"3333","details":"CST Electionn"}]';
+Future<List<Poll>> fetchPoll(String jsonString) async {
 
   var data = json.decode(jsonString);
   log("data:  $data");
@@ -25,25 +22,14 @@ Future<List<Poll>> fetchPoll() async {
   return (data as List).map((p) => Poll.fromJson(p)).toList();
 }
 
-/**
- * Poll object conversion
- */
-class Poll {
-  final String id;
-  final String details;
 
-  Poll({this.id, this.details});
-
-  factory Poll.fromJson(Map<String, dynamic> json) {
-    return Poll(
-      id: json['_id'],
-      details: json['details'],
-    );
-  }
-}
 
 class AvailablePolls extends StatelessWidget {
-  Future<List<Poll>> poll = fetchPoll();
+  String jsonStr;
+  Future<List<Poll>> poll;
+  AvailablePolls({Key key, this.jsonStr}) : super(key: key) {
+    poll = fetchPoll(jsonStr);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +38,7 @@ class AvailablePolls extends StatelessWidget {
           centerTitle: true,
           backgroundColor: Colors.grey[850],
           title: Text("Welcome!")),
-      backgroundColor: Colors.grey[50],
+      backgroundColor: Colors.black,
       body:   new Builder(
           builder: (BuildContext context) {
             return Column(
@@ -76,7 +62,7 @@ class AvailablePolls extends StatelessWidget {
                                         print('Card tapped.');
                                         Navigator.push(
                                           context,
-                                          MaterialPageRoute(builder: (context) => VotingEvent()),
+                                          MaterialPageRoute(builder: (context) => VotingEvent(jsonStr: jsonEncode(item))),
                                         );
                                       },
 
