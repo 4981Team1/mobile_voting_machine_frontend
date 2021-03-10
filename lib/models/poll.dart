@@ -9,7 +9,7 @@ class Poll {
   Poll({this.id, this.details, this.choices});
 
   Map<String, dynamic> toJson() => {
-    'id' : id,
+    '_id' : id,
     'details' : details,
     'choices' : choices,
   };
