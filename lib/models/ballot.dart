@@ -1,15 +1,15 @@
 class Ballot {
-  final String _id;
+  final String id;
   final String selected;
 
-  Ballot(this._id, this.selected);
+  Ballot({this.id, this.selected});
   Ballot.fromJson(Map<String, dynamic> json)
-      : _id = json['_id'],
+      : id = json['_id'],
         selected = json['selected'];
 
   Map<String, dynamic> toJson() =>
       {
-        '_id': _id,
+        '_id': id,
         'selected': selected,
       };
 }

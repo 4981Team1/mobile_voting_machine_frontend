@@ -19,8 +19,10 @@ class VotingEvent extends StatelessWidget {
   static const String _title = 'Example';
   String jsonStr;
   VotingEvent({Key key, this.jsonStr}) : super(key: key) {
+    print("in voting event : " + jsonStr);
     Map<String, dynamic> jsonObj = jsonDecode(jsonStr);
     electionId = jsonObj['_id'];
+    print("electionId: " + electionId);
   }
   @override
   Widget build(BuildContext context) {
@@ -128,7 +130,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => Confirmation()),
+              MaterialPageRoute(builder: (context) => Confirmation(selected: keyList[_site1], electionId: electionId)),
             );
           },
           color: Colors.white,
@@ -138,7 +140,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     );
   }
 }
-
 class _GenerateVoteList extends State<MyStatefulWidget> {
   // BestTutorSite _site = BestTutorSite.javatpoint;
   String json;
