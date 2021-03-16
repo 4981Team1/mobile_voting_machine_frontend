@@ -17,7 +17,7 @@ class EnterPin extends StatelessWidget {
             centerTitle: true,
             backgroundColor: Colors.grey[850],
             title: Text("Welcome!")),
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.grey[800],
         body: Center(
             child:Column(
                 children: <Widget>[

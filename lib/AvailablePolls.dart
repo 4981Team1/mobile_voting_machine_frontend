@@ -38,7 +38,7 @@ class AvailablePolls extends StatelessWidget {
           centerTitle: true,
           backgroundColor: Colors.grey[850],
           title: Text("Welcome!")),
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.grey[800],
       body:   new Builder(
           builder: (BuildContext context) {
             return Column(

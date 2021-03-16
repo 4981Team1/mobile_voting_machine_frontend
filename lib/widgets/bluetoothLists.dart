@@ -16,11 +16,11 @@ ListView deviceList(List<BluetoothDevice> devices, Function connect) {
                 children: [
                   Text(devices[index].name.isEmpty
                       ? "(unknown device)"
-                      : devices[index].name.toString()),
-                  Text(devices[index].id.toString()),
-                  FlatButton(
-                    color: Colors.blue,
-                    child: Text("Connect"),
+                      : devices[index].name.toString(), style: TextStyle(fontSize: 25, color:Colors.white)),
+                  Text(devices[index].id.toString(), style: TextStyle(fontSize: 25, color:Colors.white)),
+                  RaisedButton(
+                    color: Colors.white,
+                    child: Text("Connect", style: TextStyle(fontSize: 20)),
                     onPressed: (){
                       print("connecting");
                       connect(devices[index]);

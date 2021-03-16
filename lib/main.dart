@@ -41,7 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
       backgroundColor: Colors.grey[850],
     ),
     body: _buildDeviceListView(),
-    backgroundColor: Colors.grey[50],
+    backgroundColor: Colors.grey[800],
 
   );
 
