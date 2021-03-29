@@ -4,7 +4,7 @@
 class Poll {
   final String id;
   final String details;
-  final Map<String, dynamic> choices;
+  final List choices;
 
   Poll({this.id, this.details, this.choices});
 

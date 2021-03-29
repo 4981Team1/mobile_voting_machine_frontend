@@ -22,8 +22,6 @@ Future<List<Poll>> fetchPoll(String jsonString) async {
   return (data as List).map((p) => Poll.fromJson(p)).toList();
 }
 
-
-
 class AvailablePolls extends StatelessWidget {
   String jsonStr;
   Future<List<Poll>> poll;

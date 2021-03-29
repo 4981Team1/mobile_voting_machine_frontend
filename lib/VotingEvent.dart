@@ -194,7 +194,8 @@ class _GenerateVoteList extends State<MyStatefulWidget> {
 
     List<Widget> list = [];
     int i = 0;
-    data['choices'].forEach((key, value) {
+    data['choices'].forEach((obj) {
+      String key = obj['option'];
       keyList.add(key);
       ListTile lt = ListTile(
         title: Text(
@@ -215,7 +216,6 @@ class _GenerateVoteList extends State<MyStatefulWidget> {
         ),
       );
       i++;
-      print('$key and $value');
       list.add(lt);
     });
 

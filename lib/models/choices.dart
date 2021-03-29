@@ -1,5 +1,5 @@
 class Choices {
-  final Map<String, dynamic> choices;
+  final List choices;
 
   Choices(this.choices);
 

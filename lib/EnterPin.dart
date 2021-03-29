@@ -8,7 +8,8 @@ import 'main.dart';
 
 final connectionManager = ConnectionManager.getInstance();
 class EnterPin extends StatelessWidget {
-  TextEditingController pinController = TextEditingController();
+  TextEditingController userController = TextEditingController();
+  TextEditingController pwController = TextEditingController();
   // final items = Student.getStudents();
   @override
   Widget build(BuildContext context) {
@@ -24,10 +25,10 @@ class EnterPin extends StatelessWidget {
                   SizedBox(
                     height: 200,
                   ),
-                  Text('Enter Pin', style: TextStyle(color: Colors.white, fontSize: 30),
+                  Text('Log in', style: TextStyle(color: Colors.white, fontSize: 30),
                   ),
                   TextField(
-                    controller: pinController,
+                    controller: userController,
                     style: TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                       // border: InputBorder.none,
@@ -35,11 +36,20 @@ class EnterPin extends StatelessWidget {
                       enabledBorder: new UnderlineInputBorder(
                           borderSide: new BorderSide(color: Colors.green)
                       ),
-                      hintText: 'Enter a search term',
-                      // labelStyle: new TextStyle(
-                      //     color: Colors.white,
-                      // )
-
+                      hintText: 'Email',
+                    ),
+                  ),
+                  TextField(
+                    obscureText: true,
+                    controller: pwController,
+                    style: TextStyle(color: Colors.white),
+                    decoration: InputDecoration(
+                      // border: InputBorder.none,
+                      labelStyle: TextStyle(color: Colors.red),
+                      enabledBorder: new UnderlineInputBorder(
+                          borderSide: new BorderSide(color: Colors.green)
+                      ),
+                      hintText: 'Password',
                     ),
                   ),
                   SizedBox(
@@ -49,7 +59,8 @@ class EnterPin extends StatelessWidget {
                     onPressed: () async {
                       print("Connected Device: " + connectionManager.getDevice().toString());
                       print("Connected Service: " + connectionManager.getService().toString());
-                      print("textfield text: " + pinController.text);
+                      print("textfield text: " + userController.text);
+                      String toWrite = "{\"email\": \"" + userController.text +"\", \"password\":\"" + pwController.text + "\"}";
                       List<int> hex = [];
                       for (BluetoothCharacteristic characteristic in connectionManager.getService().characteristics) {
                         if (characteristic.uuid == new Guid('01010101-0101-0101-0101-010101524742')) {
@@ -69,7 +80,7 @@ class EnterPin extends StatelessWidget {
                               );
                             }
                           });
-                          characteristic.write(utf8.encode(pinController.text));
+                          characteristic.write(utf8.encode(toWrite));
                         }
                       }
 
