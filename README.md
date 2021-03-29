@@ -1,4 +1,4 @@
-# Voting Machine Frontend
+# Voting Machine Mobile Client
 ## How to run Android app on your phone and emulator  
 1. We used a Windows computer and Android Studio to develop the app. 
 2. To test this out, you can either use an Android emulator or a real Android phone.  
