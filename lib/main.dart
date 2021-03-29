@@ -5,8 +5,10 @@ import 'widgets/bluetoothLists.dart';
 import 'ConnectionManager.dart';
 import 'EnterPin.dart';
 
+// Start application
 void main() => runApp(new MyApp());
 
+// Widgets contained here
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -17,6 +19,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
+// Homepage containing widgets
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
 
@@ -45,6 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   );
 
+  // This init state includes scanning for and adding devices using bluetooth
   @override
   void initState() {
     super.initState();
@@ -106,6 +110,7 @@ class _MyHomePageState extends State<MyHomePage> {
             }
           }
       });
+      // Go to the "Enter the Pin" page
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => EnterPin()),

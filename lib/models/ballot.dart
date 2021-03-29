@@ -1,3 +1,6 @@
+/*
+This is a helper class of ballots
+*/
 class Ballot {
   final String id;
   final String selected;

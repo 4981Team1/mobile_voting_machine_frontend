@@ -3,6 +3,11 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_blue/flutter_blue.dart';
 import '../ConnectionManager.dart';
 
+
+/*
+For a large list, use Listview to construct a list of devices
+   This includes the styles too
+   */
 ListView deviceList(List<BluetoothDevice> devices, Function connect) {
   return ListView.builder(
       itemCount: devices.length,
@@ -33,6 +38,7 @@ ListView deviceList(List<BluetoothDevice> devices, Function connect) {
         );
       });
 }
+// Some helper functions
 
 class ServiceList extends StatelessWidget{
   ConnectionManager connectionManager = ConnectionManager.getInstance();
