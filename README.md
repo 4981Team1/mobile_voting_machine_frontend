@@ -1,5 +1,5 @@
 # Voting Machine Mobile Client
-## How to run Android app on your phone and emulator  
+## How to run Android app on your phone and/or emulator  
 1. We used a Windows computer and Android Studio to develop the app. 
 2. To test this out, you can either use an Android emulator or a real Android phone.  
 3. Make sure the Android Studio is installed on your computer successfully. You can go to the official website to download the latest compatible version.  
@@ -19,7 +19,7 @@ to run the app on your phone.
 8. You are all set!  
 
 
-## How to run iOS app on your iPhone and emulator  
+## How to run iOS app on your iPhone and/or emulator  
 1. We used a Mac computer, Android Studio and Xcode to develop the iOS app. 
 2. To test this out, you can either use an iPhone emulator or a real iPhone.  
 3. Make sure the Android Studio and Xcode are installed on your computer successfully. For Xcode, you can download in the App Store. For the Android Studio, you can go to the official website to download the latest compatible version.  
