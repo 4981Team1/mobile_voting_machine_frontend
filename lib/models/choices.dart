@@ -1,3 +1,6 @@
+/*
+This is a helper class of choices
+*/
 class Choices {
   final List choices;
 

@@ -9,11 +9,14 @@ import 'VotingEvent.dart';
 
 final connectionManager = ConnectionManager.getInstance();
 String jsonStr;
+
+// This class contains the confirmation before submitting a vote for someone
 class Confirmation extends StatelessWidget {
   String selected;
   String electionId;
   Confirmation({Key key, this.selected, this.electionId}) : super(key: key);
 
+  // This widget contains styles
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,6 +39,7 @@ class Confirmation extends StatelessWidget {
                 ),
                 RaisedButton(
                   onPressed: () {
+                    // Go back to voting events page
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => VotingEvent()),
@@ -59,6 +63,7 @@ class Confirmation extends StatelessWidget {
                         await characteristic.write(utf8.encode(jsonStr));
                       }
                     }
+                    //Go to available polls page
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => AvailablePolls()),

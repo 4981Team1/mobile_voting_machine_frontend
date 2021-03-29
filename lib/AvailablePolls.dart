@@ -22,6 +22,8 @@ Future<List<Poll>> fetchPoll(String jsonString) async {
   return (data as List).map((p) => Poll.fromJson(p)).toList();
 }
 
+
+// This class contains the available polls and associated styles
 class AvailablePolls extends StatelessWidget {
   String jsonStr;
   Future<List<Poll>> poll;
@@ -29,6 +31,7 @@ class AvailablePolls extends StatelessWidget {
     poll = fetchPoll(jsonStr);
   }
 
+  // widget containing styles
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,6 +61,7 @@ class AvailablePolls extends StatelessWidget {
                                       splashColor: Colors.blue.withAlpha(30),
                                       onTap: () {
                                         print('Card tapped.');
+                                        // Go to voting event page
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(builder: (context) => VotingEvent(jsonStr: jsonEncode(item))),

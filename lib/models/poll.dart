@@ -1,6 +1,6 @@
-/**
- * Poll object conversion
- */
+/*
+ Poll object conversion
+*/
 class Poll {
   final String id;
   final String details;
