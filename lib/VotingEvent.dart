@@ -43,7 +43,6 @@ class VotingEvent extends StatelessWidget {
   }
 }
 
-// enum BestTutorSite { javatpoint, w3schools, tutorialandexample }
 
 class MyStatefulWidget extends StatefulWidget {
   String jsonStr;
@@ -52,94 +51,6 @@ class MyStatefulWidget extends StatefulWidget {
   @override
   _GenerateVoteList createState() => _GenerateVoteList(json: jsonStr);
 }
-
-// BestTutorSite _site = BestTutorSite.javatpoint;
-//
-// class _MyStatefulWidgetState extends State<MyStatefulWidget> {
-//   Widget build(BuildContext context) {
-//     // String json = '{"choices":{"a":0,"b":1}}';
-//     // generateList(json);
-//
-//     return Column(
-//       children: <Widget>[
-//         ListTile(
-//           title: const Text(
-//             'www.javatpoint.com',
-//             style: TextStyle(
-//               color: Colors.white,
-//             ),
-//           ),
-//           leading: Radio(
-//             activeColor: Colors.green,
-//             value: BestTutorSite.javatpoint,
-//             groupValue: _site,
-//             onChanged: (BestTutorSite value) {
-//               setState(() {
-//                 _site = value;
-//               });
-//             },
-//           ),
-//         ),
-//         ListTile(
-//           title: const Text(
-//             'www.w3school.com',
-//             style: TextStyle(
-//               color: Colors.white,
-//             ),
-//           ),
-//           leading: Radio(
-//             activeColor: Colors.green,
-//             value: BestTutorSite.w3schools,
-//             groupValue: _site,
-//             onChanged: (BestTutorSite value) {
-//               setState(() {
-//                 _site = value;
-//               });
-//             },
-//           ),
-//         ),
-//         ListTile(
-//           title: const Text(
-//             'www.tutorialandexample.com',
-//             style: TextStyle(
-//               color: Colors.white,
-//             ),
-//           ),
-//           leading: Radio(
-//             activeColor: Colors.green,
-//             value: BestTutorSite.tutorialandexample,
-//             groupValue: _site,
-//             onChanged: (BestTutorSite value) {
-//               setState(() {
-//                 _site = value;
-//               });
-//             },
-//           ),
-//         ),
-//         RaisedButton(
-//           onPressed: () {
-//             Navigator.push(
-//               context,
-//               MaterialPageRoute(builder: (context) => AvailablePolls()),
-//             );
-//           },
-//           color: Colors.white,
-//           child: const Text('Back', style: TextStyle(fontSize: 20)),
-//         ),
-//         RaisedButton(
-//           onPressed: () {
-//             Navigator.push(
-//               context,
-//               MaterialPageRoute(builder: (context) => Confirmation(selected: keyList[_site1], electionId: electionId)),
-//             );
-//           },
-//           color: Colors.white,
-//           child: const Text('Submit', style: TextStyle(fontSize: 20)),
-//         ),
-//       ],
-//     );
-//   }
-// }
 
 // Helper class containing list of candidates
 class _GenerateVoteList extends State<MyStatefulWidget> {
