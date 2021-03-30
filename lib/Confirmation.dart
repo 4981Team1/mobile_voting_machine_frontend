@@ -14,7 +14,8 @@ String jsonStr;
 class Confirmation extends StatelessWidget {
   String selected;
   String electionId;
-  Confirmation({Key key, this.selected, this.electionId}) : super(key: key);
+  int choiceIndex;
+  Confirmation({Key key, this.selected, this.electionId, this.choiceIndex}) : super(key: key);
 
   // This widget contains styles
   @override
@@ -40,9 +41,8 @@ class Confirmation extends StatelessWidget {
                 RaisedButton(
                   onPressed: () {
                     // Go back to voting events page
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => VotingEvent()),
+                    Navigator.pop(
+                      context
                     );
 
                   },
@@ -54,8 +54,7 @@ class Confirmation extends StatelessWidget {
                   onPressed: () async {
                     print(electionId);
                     print(selected);
-                    //TODO: fix this to use ballot model later
-                    jsonStr = "{\"_id\":\""+electionId+"\",\"selected\":\""+selected+"\"}";
+                    jsonStr = "{\"_id\":\""+electionId+"\",\"selected\":\""+selected+"\", \"choice\": \""+ choiceIndex.toString() +"\"}";
                     print(jsonStr);
                     for(BluetoothCharacteristic characteristic in connectionManager.getService().characteristics) {
                       if(characteristic.uuid == new Guid('01010101-0101-0101-0101-010101524745')) {

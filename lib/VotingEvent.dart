@@ -26,18 +26,15 @@ class VotingEvent extends StatelessWidget {
   }
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: _title,
-      home: Scaffold(
-        appBar: AppBar(
-            centerTitle: true,
-            backgroundColor: Colors.grey[850],
-            title: Text("Welcome!")),
-        backgroundColor: Colors.grey[800],
-        // appBar: AppBar(title: const Text(_title)),
-        body: Center(
-          child: MyStatefulWidget(jsonStr: jsonStr),
-        ),
+    return Scaffold (
+      appBar: AppBar(
+          centerTitle: true,
+          backgroundColor: Colors.grey[850],
+          title: Text("Welcome!")),
+      backgroundColor: Colors.grey[800],
+      // appBar: AppBar(title: const Text(_title)),
+      body: Center(
+        child: MyStatefulWidget(jsonStr: jsonStr),
       ),
     );
   }
@@ -70,7 +67,7 @@ class _GenerateVoteList extends State<MyStatefulWidget> {
         // Go to next page: confirmation
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => Confirmation(selected: keyList[_site1], electionId: electionId)),
+          MaterialPageRoute(builder: (context) => Confirmation(selected: keyList[_site1], electionId: electionId, choiceIndex: _site1)),
         );
       },
       color: Colors.white,
