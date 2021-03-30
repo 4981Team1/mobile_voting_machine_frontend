@@ -25,7 +25,9 @@ Future<List<Poll>> fetchPoll(String jsonString) async {
 }
 
 
-// This class contains the available polls and associated styles
+/**
+ * Class contains the available polls and associated styles.
+ */
 class AvailablePolls extends StatelessWidget {
   String jsonStr;
   Future<List<Poll>> poll;
@@ -33,14 +35,13 @@ class AvailablePolls extends StatelessWidget {
     poll = fetchPoll(jsonStr);
   }
 
-  // widget containing styles
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
           centerTitle: true,
           backgroundColor: Colors.grey[850],
-          title: Text("Available Polls")),
+          title: Text("Happy Voting!")),
       backgroundColor: Colors.grey[800],
       body:   new Builder(
           builder: (BuildContext context) {
@@ -79,6 +80,7 @@ class AvailablePolls extends StatelessWidget {
                                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                           children: <Widget>[
                                             Text('Voting Event #' + index.toString()),
+                                            Text('Poll id: ' + item.id),
                                             Text('Poll title: ' + item.details),
                                             // ignore: missing_return
                                           ],

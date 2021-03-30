@@ -1,7 +1,6 @@
 import 'package:Voting_Machine/AvailablePolls.dart';
 import 'package:flutter_blue/flutter_blue.dart';
 import 'package:flutter/material.dart';
-import './models/ballot.dart';
 import 'dart:convert';
 import 'ConnectionManager.dart';
 import 'EnterPin.dart';
@@ -24,7 +23,7 @@ class Confirmation extends StatelessWidget {
       appBar: AppBar(
           centerTitle: true,
           backgroundColor: Colors.grey[850],
-          title: Text("Welcome!")
+          title: Text("Confirmation!")
       ),
       backgroundColor: Colors.grey[800],
       body: Center(

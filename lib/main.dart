@@ -5,10 +5,11 @@ import 'widgets/bluetoothLists.dart';
 import 'ConnectionManager.dart';
 import 'EnterPin.dart';
 
-// Start application
 void main() => runApp(new MyApp());
 
-// Widgets contained here
+/**
+ * Widgets of main.
+ */
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -100,7 +101,6 @@ class _MyHomePageState extends State<MyHomePage> {
       if (e.code != 'already_connected') throw e;
     } finally {
       await connectionManager.getDevice().discoverServices();
-//      print(connectionManager.getDevice().services);
       connectionManager.getDevice().services.forEach((List<BluetoothService> services) {
           for(BluetoothService service in services) {
             print("Service information: " + service.toString());

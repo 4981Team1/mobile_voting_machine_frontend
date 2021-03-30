@@ -96,12 +96,6 @@ ListView characteristicList(List<BluetoothCharacteristic> characteristics) {
             writeButton(characteristics[index])
           ],);
 
-        // if (characteristics[index].properties.read)
-        //   return readButton(characteristics[index]);
-        // if (characteristics[index].properties.write)
-        //   return writeButton(characteristics[index]);
-        // // if(characteristics[index].properties.notify)
-        // return notifyButton(characteristics[index]);
 
       });
 }
