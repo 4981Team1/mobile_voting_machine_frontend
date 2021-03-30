@@ -63,7 +63,7 @@ class EnterPin extends StatelessWidget {
                       print("Connected Device: " + connectionManager.getDevice().toString());
                       print("Connected Service: " + connectionManager.getService().toString());
                       print("textfield text: " + userController.text);
-                      String toWrite = "{\"email\": \"" + userController.text +"\", \"password\":\"" + pwController.text + "\"}";
+                      connectionManager.setLoginString("{\"email\": \"" + userController.text +"\", \"password\":\"" + pwController.text + "\"}");
                       List<int> hex = [];
                       for (BluetoothCharacteristic characteristic in connectionManager.getService().characteristics) {
                         if (characteristic.uuid == new Guid('01010101-0101-0101-0101-010101524742')) {
@@ -83,7 +83,7 @@ class EnterPin extends StatelessWidget {
                               );
                             }
                           });
-                          characteristic.write(utf8.encode(toWrite));
+                          characteristic.write(utf8.encode(connectionManager.getLoginString()));
                         }
                       }
 

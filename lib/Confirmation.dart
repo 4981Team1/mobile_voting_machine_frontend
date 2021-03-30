@@ -62,12 +62,29 @@ class Confirmation extends StatelessWidget {
                         await characteristic.write(utf8.encode(jsonStr));
                       }
                     }
-                    //Go to available polls page
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => AvailablePolls()),
-                    );
 
+                    List<int> hex = [];
+                    for (BluetoothCharacteristic characteristic in connectionManager.getService().characteristics) {
+                      if (characteristic.uuid == new Guid('01010101-0101-0101-0101-010101524742')) {
+                        await characteristic.setNotifyValue(true);
+                        characteristic.value.listen((value) {
+                          hex+=value;
+                          String stringValue = new String.fromCharCodes(hex);
+                          print("NOTIFY: ${stringValue}");
+                          if(value.length == 1) {
+                            hex.removeLast();
+                            print("yes");
+                            String stringValue = new String.fromCharCodes(hex);
+                            print("NOTIFY: " + stringValue);
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => AvailablePolls(jsonStr: stringValue)),
+                            );
+                          }
+                        });
+                        characteristic.write(utf8.encode(connectionManager.getLoginString()));
+                      }
+                    }
                   },
                   color: Colors.white,
                   child: const Text('Confirm', style: TextStyle(fontSize: 20)),

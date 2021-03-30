@@ -15,11 +15,13 @@ final connectionManager = ConnectionManager.getInstance();
  */
 Future<List<Poll>> fetchPoll(String jsonString) async {
 
-  var data = json.decode(jsonString);
-  log("data:  $data");
+  if(jsonString.isNotEmpty){
+    var data = json.decode(jsonString);
+    log("data:  $data");
 
-  // If the call to the server was successful, parse the JSON.
-  return (data as List).map((p) => Poll.fromJson(p)).toList();
+    // If the call to the server was successful, parse the JSON.
+    return (data as List).map((p) => Poll.fromJson(p)).toList();
+  }
 }
 
 
@@ -38,7 +40,7 @@ class AvailablePolls extends StatelessWidget {
       appBar: AppBar(
           centerTitle: true,
           backgroundColor: Colors.grey[850],
-          title: Text("Welcome!")),
+          title: Text("Available Polls")),
       backgroundColor: Colors.grey[800],
       body:   new Builder(
           builder: (BuildContext context) {
@@ -77,7 +79,6 @@ class AvailablePolls extends StatelessWidget {
                                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                           children: <Widget>[
                                             Text('Voting Event #' + index.toString()),
-                                            Text('Poll id: ' + item.id),
                                             Text('Poll title: ' + item.details),
                                             // ignore: missing_return
                                           ],
@@ -100,9 +101,12 @@ class AvailablePolls extends StatelessWidget {
                 RaisedButton(
                   color: Colors.white,
                   onPressed: () {
-                      Navigator.push(
-                         context,
-                        MaterialPageRoute(builder: (context) => EnterPin()),
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => EnterPin()
+                        ),
+                        ModalRoute.withName("/home")
                        );
                   },
                   child: const Text('Finish', style: TextStyle(fontSize: 20)),
