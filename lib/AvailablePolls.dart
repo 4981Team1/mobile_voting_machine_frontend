@@ -23,7 +23,9 @@ Future<List<Poll>> fetchPoll(String jsonString) async {
 }
 
 
-// This class contains the available polls and associated styles
+/**
+ * Class contains the available polls and associated styles.
+ */
 class AvailablePolls extends StatelessWidget {
   String jsonStr;
   Future<List<Poll>> poll;
@@ -31,7 +33,6 @@ class AvailablePolls extends StatelessWidget {
     poll = fetchPoll(jsonStr);
   }
 
-  // widget containing styles
   @override
   Widget build(BuildContext context) {
     return Scaffold(
