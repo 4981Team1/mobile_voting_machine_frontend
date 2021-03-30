@@ -51,7 +51,6 @@ class MyStatefulWidget extends StatefulWidget {
 
 // Helper class containing list of candidates
 class _GenerateVoteList extends State<MyStatefulWidget> {
-  // BestTutorSite _site = BestTutorSite.javatpoint;
   String json;
   _GenerateVoteList({this.json});
 
@@ -94,8 +93,6 @@ class _GenerateVoteList extends State<MyStatefulWidget> {
     wList.add(sendBtn);
 
     Column colList = Column(children: wList);
-    // colList.children.add(backBtn);
-    // colList.children.add(sendBtn);
     return colList;
   }
 

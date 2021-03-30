@@ -9,11 +9,12 @@ import 'main.dart';
 final connectionManager = ConnectionManager.getInstance();
 
 // This class contains widgets that allows user to enter a pin
+/**
+ * Class that contains widgets allowing user to enter a pin.
+ */
 class EnterPin extends StatelessWidget {
   TextEditingController userController = TextEditingController();
   TextEditingController pwController = TextEditingController();
-  // final items = Student.getStudents();
-  // This widget contains styles
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -74,7 +75,6 @@ class EnterPin extends StatelessWidget {
                             print("NOTIFY: ${stringValue}");
                             if(value.length == 1) {
                               hex.removeLast();
-                              print("yes");
                               String stringValue = new String.fromCharCodes(hex);
                               print("NOTIFY: " + stringValue);
                               Navigator.push(
