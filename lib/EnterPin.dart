@@ -20,7 +20,7 @@ class EnterPin extends StatelessWidget {
         appBar: AppBar(
             centerTitle: true,
             backgroundColor: Colors.grey[850],
-            title: Text("Welcome!")),
+            title: Text("Enter Pin!")),
         backgroundColor: Colors.grey[800],
         body: Center(
             child:Column(

@@ -30,7 +30,7 @@ class VotingEvent extends StatelessWidget {
       appBar: AppBar(
           centerTitle: true,
           backgroundColor: Colors.grey[850],
-          title: Text("Welcome!")),
+          title: Text("Voting Events!")),
       backgroundColor: Colors.grey[800],
       // appBar: AppBar(title: const Text(_title)),
       body: Center(

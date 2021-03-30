@@ -38,7 +38,7 @@ class AvailablePolls extends StatelessWidget {
       appBar: AppBar(
           centerTitle: true,
           backgroundColor: Colors.grey[850],
-          title: Text("Welcome!")),
+          title: Text("Happy Voting!")),
       backgroundColor: Colors.grey[800],
       body:   new Builder(
           builder: (BuildContext context) {

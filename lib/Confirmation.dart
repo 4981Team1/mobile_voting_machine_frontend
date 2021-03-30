@@ -24,7 +24,7 @@ class Confirmation extends StatelessWidget {
       appBar: AppBar(
           centerTitle: true,
           backgroundColor: Colors.grey[850],
-          title: Text("Welcome!")
+          title: Text("Confirmation!")
       ),
       backgroundColor: Colors.grey[800],
       body: Center(
