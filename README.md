@@ -16,7 +16,7 @@ to see if the device is connected properly.
 7. Follow the instructions on this link to run the app on your Android phone: [click me](https://developer.android.com/training/basics/firstapp/running-app). But to put it in simple terms, you need to enable USB debugging by opening the Settings on your Android phone. Locate to the build number seven times. Then, you will be able to see the device on the available devices list. Click   
 `run`   
 to run the app on your phone.
-8. You are all set!  
+8. You are all set! Make sure Bluetooth is on for your phone. Make sure the Pi server is running in the room. You will be able to see the homepage with a list of devices!
 
 
 ## How to run iOS app on your iPhone and/or emulator  
@@ -37,6 +37,7 @@ to see if the device is connected properly.
 8. In the menu, click Preferences, then enter your Apple ID. Make sure you are using the same ID for your Mac and your phone. It will register you as a personal team.  
 9. Navigate to the Product menu and click Clean Build Folder.
 10. Click the whole Runner folder, enter your personal team as the team.
-Your app will appear on your iPhone. Don’t forget to trust this app by going to Settings -> General -> Device Management.   
-11. You are all set!  
+Your app will appear on your iPhone. Don’t forget to trust this app by going to Settings -> General -> Device Management. 
+11. Click the run button on Xcode.
+12. You are all set! Your app will start automatically on your iPhone. Click allow Bluetooth device when prompted. Make sure the Pi server is running in the room. You will be able to see the homepage with a list of devices!
 
