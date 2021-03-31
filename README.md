@@ -33,7 +33,7 @@ The app will run in the emulator. Remember to locate the root of the project fol
 6. To launch the app in a real iPhone, you need to follow the instructions given in the Android Studio. First, make sure you connect your iPhone to your Mac using a USB cord. Run   
  `flutter doctor -v`  
 to see if the device is connected properly.  
-7. Click the link provided, and you will be redirected to the Xcode version of the Flutter project.   
+7. Click the link appeared in the Android Studio console, and you will be redirected to the Xcode version of the Flutter project.   
 8. In the menu, click Preferences, then enter your Apple ID. Make sure you are using the same ID for your Mac and your phone. It will register you as a personal team.  
 9. Navigate to the Product menu and click Clean Build Folder.
 10. Click the whole Runner folder, enter your personal team as the team.
